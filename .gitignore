@@ -1,0 +1,21 @@
+# Compilação
+/target/
+
+# Credenciais do aparelho (token/key) — nunca publicar
+config.json
+
+# Logs gerados pelo app
+*.log
+*.log.1
+
+# Pacotes de apps de terceiros usados em análises
+*.apk
+*.apkm
+*.xapk
+
+# Editores e sistema
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini

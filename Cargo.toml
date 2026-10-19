@@ -1,0 +1,53 @@
+[package]
+name = "ar-midea"
+version = "0.1.0"
+edition = "2021"
+description = "Controle local de ar-condicionado Midea (protocolo LAN V3) para Windows, com painel e ícone na bandeja"
+license = "MIT"
+readme = "README.md"
+keywords = ["midea", "ar-condicionado", "msmart", "windows", "tray"]
+publish = false
+
+[lib]
+name = "ar_midea"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ArCondicionado"
+path = "src/main.rs"
+
+[dependencies]
+aes = "0.8"
+md-5 = "0.10"
+sha2 = "0.10"
+getrandom = "0.2"
+hex = "0.4"
+hmac = "0.12"
+ureq = "3"
+log = "0.4"
+raw-window-handle = "0.6"
+serde_json = { version = "1", features = ["preserve_order"] }
+ab_glyph = "0.2"
+eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts"] }
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Security",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[build-dependencies]
+embed-resource = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
